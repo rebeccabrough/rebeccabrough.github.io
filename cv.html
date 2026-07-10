@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebecca Brough — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --navy: #1a1a1a;
+        --text: #1a1a1a;
+        --subtitle-grey: #555555;
+        --body-grey: #333333;
+        --rule: #dddddd;
+        --hairline: #f0f0f0;
+        --max-width: 780px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 40px 24px 96px;
+        font-family: 'Roboto', system-ui, Arial, sans-serif;
+        color: var(--text);
+        background: #ffffff;
+        line-height: 1.6;
+    }
+
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+        font-size: 14px;
+    }
+    .topbar a { color: var(--subtitle-grey); text-decoration: none; }
+    .topbar a:hover { color: var(--text); }
+    .topbar .back::before { content: "\2190\00a0"; }
+
+    .accent-bar {
+        height: 4px;
+        width: 56px;
+        background: var(--navy);
+        margin-bottom: 28px;
+    }
+
+    header { margin-bottom: 40px; }
+    .name {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+    }
+    .contact-line {
+        font-size: 14.5px;
+        color: var(--subtitle-grey);
+        margin: 0;
+    }
+    .contact-line span { white-space: nowrap; }
+    .contact-line .sep { color: var(--rule); margin: 0 8px; }
+    .contact-line a { color: var(--subtitle-grey); text-decoration: underline; }
+    .contact-line a:hover { color: var(--text); }
+
+    .section { margin-bottom: 36px; }
+    .section-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 7px;
+        margin: 0 0 18px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 7px 0;
+        align-items: baseline;
+    }
+    .row .main { flex: 1 1 auto; }
+    .row .inst { font-weight: 500; }
+    .row .detail { color: var(--body-grey); font-size: 15px; }
+    .row .date {
+        flex: 0 0 auto;
+        color: var(--subtitle-grey);
+        font-size: 14px;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    ol.papers {
+        margin: 0;
+        padding-left: 22px;
+    }
+    ol.papers li {
+        padding: 6px 0;
+        color: var(--text);
+        font-size: 15.5px;
+    }
+    ol.papers li .co { color: var(--subtitle-grey); }
+    ol.papers li .venue { color: var(--subtitle-grey); font-style: italic; }
+    ol.papers a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    ol.papers a:hover { border-color: var(--text); }
+
+    .pres-year {
+        display: flex;
+        gap: 18px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--hairline);
+        font-size: 15px;
+    }
+    .pres-year:last-child { border-bottom: none; }
+    .pres-year .yr {
+        flex: 0 0 46px;
+        font-weight: 500;
+        color: var(--text);
+    }
+    .pres-year .items { flex: 1 1 auto; color: var(--body-grey); }
+
+    .plain { font-size: 15px; color: var(--body-grey); margin: 0; }
+    .plain .label { color: var(--text); font-weight: 500; }
+
+    .updated {
+        margin-top: 48px;
+        padding-top: 16px;
+        border-top: 1px solid var(--rule);
+        font-size: 13px;
+        color: var(--subtitle-grey);
+    }
+
+    @media (max-width: 560px) {
+        .row { flex-direction: column; gap: 2px; }
+        .row .date { text-align: left; }
+        .contact-line .sep { display: none; }
+        .contact-line span, .contact-line a { display: block; margin-bottom: 2px; }
+    }
+
+    :focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="topbar">
+        <a class="back" href="index.html">Home</a>
+        <a href="Brough_CV.pdf">Download PDF</a>
+    </div>
+
+    <div class="accent-bar"></div>
+
+    <header>
+        <p class="name">Rebecca Jane Brough</p>
+        <p class="contact-line">
+            <a href="mailto:rjbrough@ucdavis.edu">rjbrough@ucdavis.edu</a>
+            <span class="sep">|</span>
+            <span>Department of Economics, UC Davis</span>
+            <span class="sep">|</span>
+            <span>Davis, CA 95616</span>
+            <span class="sep">|</span>
+            <span>Citizenship: Canada</span>
+        </p>
+    </header>
+
+    <main>
+
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="row">
+                <div class="main">
+                    <div class="inst">University of California, Davis</div>
+                    <div class="detail">Ph.D. in Economics</div>
+                </div>
+                <div class="date">September 2021 &ndash; Present</div>
+            </div>
+            <div class="row">
+                <div class="main">
+                    <div class="inst">University of Virginia</div>
+                    <div class="detail">B.A. in Economics and Politics, with highest distinction</div>
+                </div>
+                <div class="date">May 2018</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research Interests</h2>
+            <p class="plain">Labor, Public, and Economic History</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Working Papers</h2>
+            <ol class="papers">
+                <li>&ldquo;Access to Teaching and Women&rsquo;s Long-run Outcomes&rdquo; (JMP)</li>
+                <li>&ldquo;Citizenship Policy and Immigrant Women&rsquo;s Integration: Evidence from the 1922 Cable Act&rdquo;</li>
+                <li>&ldquo;Teacher Marriage Bars&rdquo; <span class="co">(with Wenni Yang)</span></li>
+                <li>&ldquo;Better Outcomes, Lower Costs: Evidence from Competitive Bidding in WIC&rdquo; <span class="co">(with Grace Ortuzar)</span></li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Publications</h2>
+            <ol class="papers">
+                <li>
+                    &ldquo;<a href="https://www.aeaweb.org/articles?id=10.1257/jel.20251774">Refugees&rsquo; Economic Integration</a>&rdquo;
+                    <span class="co">(with Dany Bahar and Giovanni Peri)</span>
+                    <span class="venue">Journal of Economic Literature</span>, forthcoming
+                </li>
+                <li>
+                    &ldquo;<a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230460">Eliminating Fares to Expand Opportunities: Experimental Evidence on the Impacts of Free Public Transportation on Economic and Social Disparities</a>&rdquo;
+                    <span class="co">(with Matt Freedman and David Phillips)</span>
+                    <span class="venue">American Economic Journal: Economic Policy</span> 17.3 (2025): 1&ndash;34.
+                </li>
+                <li>
+                    &ldquo;<a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230053">High Schools Tailored to Adults Can Help Them Complete a Traditional Diploma and Excel in the Labor Market</a>&rdquo;
+                    <span class="co">(with David Phillips and Patrick Turner)</span>
+                    <span class="venue">American Economic Journal: Economic Policy</span> 16.4 (2024): 34&ndash;67.
+                </li>
+                <li>
+                    &ldquo;<a href="https://www.sciencedirect.com/science/article/pii/S0166046222000436">Experimental Evidence on the Effects of Means-Tested Public Transportation Subsidies on Travel Behavior</a>&rdquo;
+                    <span class="co">(with Matt Freedman and David Phillips)</span>
+                    <span class="venue">Regional Science and Urban Economics</span> 96 (2022): 103803.
+                </li>
+                <li>
+                    &ldquo;<a href="https://www.sciencedirect.com/science/article/pii/S0165176522001501">Can Transportation Subsidies Reduce Failures to Appear in Criminal Court? Evidence from a Pilot Randomized Controlled Trial</a>&rdquo;
+                    <span class="co">(with Matt Freedman, Dan Ho, and David Phillips)</span>
+                    <span class="venue">Economics Letters</span> 216 (2022): 110540.
+                </li>
+                <li>
+                    &ldquo;<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12527">Understanding Socioeconomic Disparities in Travel Behavior During the COVID-19 Pandemic</a>&rdquo;
+                    <span class="co">(with Matt Freedman and David Phillips)</span>
+                    <span class="venue">Journal of Regional Science</span> 61.4 (2021): 753&ndash;774.
+                </li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research Affiliations</h2>
+            <div class="row">
+                <div class="main"><span class="inst">Wilson Sheehan Lab for Economic Opportunities</span> &mdash; Emerging Scholar Affiliate</div>
+                <div class="date">2025 &ndash;</div>
+            </div>
+            <div class="row">
+                <div class="main"><span class="inst">Global Migration Center</span></div>
+                <div class="date">2024 &ndash;</div>
+            </div>
+            <div class="row">
+                <div class="main"><span class="inst">Center for Poverty and Inequality Research</span></div>
+                <div class="date">2024 &ndash;</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Awards and Grants</h2>
+            <div class="row">
+                <div class="main">Russell Sage Foundation, Dissertation Grant &mdash; $15,000</div>
+                <div class="date">2026 &ndash; 2027</div>
+            </div>
+            <div class="row">
+                <div class="main">Economic History Association, Sokoloff Award &mdash; $17,500</div>
+                <div class="date">2026 &ndash; 2027</div>
+            </div>
+            <div class="row">
+                <div class="main">Provost Dissertation Year Fellowship &mdash; $60,000</div>
+                <div class="date">2026 &ndash; 2027</div>
+            </div>
+            <div class="row">
+                <div class="main">Bacon Family Fellowship Award &mdash; $6,000</div>
+                <div class="date">2025</div>
+            </div>
+            <div class="row">
+                <div class="main">UC Davis Travel Grant Award</div>
+                <div class="date">2022, 2024, 2025, 2026</div>
+            </div>
+            <div class="row">
+                <div class="main">UC Davis Research Grant Award</div>
+                <div class="date">2024, 2025</div>
+            </div>
+            <div class="row">
+                <div class="main">Emmerich-Wright Award for best undergraduate politics thesis, University of Virginia</div>
+                <div class="date">2018</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Presentations</h2>
+            <div class="pres-year">
+                <div class="yr">2026</div>
+                <div class="items">IPUMS Data Conference; Southern Economic Association; Center for Poverty and Inequality Mini-Conference; Economic History Association (Poster); UC Davis Alumni Conference (Poster); Institute for Research on Poverty (Poster); NBER Summer Institute: DAE (Poster)</div>
+            </div>
+            <div class="pres-year">
+                <div class="yr">2025</div>
+                <div class="items">Institute for Humane Studies Workshop on Migration; Global Migration Center; Economic History Association; Southern Economic Association Annual Meeting</div>
+            </div>
+            <div class="pres-year">
+                <div class="yr">2024</div>
+                <div class="items">APPAM</div>
+            </div>
+            <div class="pres-year">
+                <div class="yr">2023</div>
+                <div class="items">Montana State University Applied Economics Conference; Center for Poverty and Inequality Graduate Student Retreat</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research Assistance</h2>
+            <div class="row">
+                <div class="main">Professor Marianne Bitler</div>
+                <div class="date">Aug 2025 &ndash; Present</div>
+            </div>
+            <div class="row">
+                <div class="main">Professor Giovanni Peri</div>
+                <div class="date">Jun&ndash;Dec 2023; Jan&ndash;Jun 2025</div>
+            </div>
+            <div class="row">
+                <div class="main">Professors Marianne Bitler and Marianne Page</div>
+                <div class="date">Sep 2023 &ndash; Dec 2024</div>
+            </div>
+            <div class="row">
+                <div class="main">California Policy Lab, UC Berkeley</div>
+                <div class="date">Jun &ndash; Dec 2023</div>
+            </div>
+            <div class="row">
+                <div class="main">Professors Matt Freedman and David Phillips, through NBER</div>
+                <div class="date">Dec 2022 &ndash; Mar 2023</div>
+            </div>
+            <div class="row">
+                <div class="main">Wilson Sheehan Lab for Economic Opportunities, University of Notre Dame</div>
+                <div class="date">Jun 2018 &ndash; Jul 2021</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Teaching Experience</h2>
+            <div class="row">
+                <div class="main">Leader of Undergraduate Research Fellow Group</div>
+                <div class="date">Spring 2024; Fall 2025</div>
+            </div>
+            <div class="row">
+                <div class="main">TA, ECN 140: Econometrics</div>
+                <div class="date">Winter 2022</div>
+            </div>
+            <div class="row">
+                <div class="main">TA, ECN 130: Public Microeconomics</div>
+                <div class="date">Spring 2022</div>
+            </div>
+            <div class="row">
+                <div class="main">TA, ECN 102: Analysis of Economic Data</div>
+                <div class="date">Winter 2021; Spring 2021; Fall 2022</div>
+            </div>
+            <div class="row">
+                <div class="main">TA, ECN 01A: Principles of Microeconomics</div>
+                <div class="date">Fall 2021</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Professional Service</h2>
+            <p class="plain" style="margin-bottom:8px;">
+                <span class="label">Referee:</span> Journal of Human Resources; Journal of Urban Economics: Insights; Journal of Policy Analysis and Management; Journal of Political Economy: Microeconomics
+            </p>
+            <div class="row">
+                <div class="main">UC Davis Graduate Student Mentor</div>
+                <div class="date">2024 &ndash; Present</div>
+            </div>
+        </section>
+
+        <p class="updated">Last updated June 2026</p>
+
+    </main>
+</div>
+</body>
+</html>

@@ -3,14 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rebecca Brough</title>
+<title>Rebecca Brough — Economics, UC Davis</title>
+<meta name="description" content="Rebecca Brough is a PhD candidate in economics at UC Davis studying labor, public, and economic history. On the 2026–2027 job market.">
+<link rel="canonical" href="https://rebeccabrough.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- Social sharing preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rebeccabrough.github.io/">
+<meta property="og:title" content="Rebecca Brough — Economics, UC Davis">
+<meta property="og:description" content="PhD candidate in economics at UC Davis studying labor, public, and economic history. On the 2026–2027 job market.">
+<meta property="og:image" content="https://rebeccabrough.github.io/headshot.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rebecca Brough — Economics, UC Davis">
+<meta name="twitter:description" content="PhD candidate in economics at UC Davis studying labor, public, and economic history.">
+<meta name="twitter:image" content="https://rebeccabrough.github.io/headshot.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
     :root {
         --navy: #1a1a1a;
         --navy-hover: #000000;
+        --accent: #2f5d5a;
+        --accent-hover: #244745;
         --text: #1a1a1a;
         --subtitle-grey: #555555;
         --body-grey: #333333;
@@ -40,7 +57,7 @@
     .accent-bar {
         height: 4px;
         width: 56px;
-        background: var(--navy);
+        background: var(--accent);
         margin-bottom: 32px;
     }
 
@@ -54,11 +71,13 @@
     }
 
     .name {
-        font-size: 32px;
-        font-weight: 700;
+        font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+        font-optical-sizing: auto;
+        font-size: 36px;
+        font-weight: 500;
         color: var(--text);
-        margin: 0 0 4px;
-        letter-spacing: -0.01em;
+        margin: 0 0 6px;
+        letter-spacing: -0.005em;
     }
 
     .subtitle {
@@ -105,7 +124,8 @@
         margin: 0 0 16px;
     }
 
-    .bio a { color: var(--text); text-decoration: underline; }
+    .bio a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: var(--rule); transition: color 0.15s ease, text-decoration-color 0.15s ease; }
+    .bio a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
     .access-note {
         font-size: 14px;
@@ -121,16 +141,16 @@
 
     .contact-pill {
         display: inline-block;
-        padding: 6px 14px;
-        border: 1px solid var(--tag-border);
+        padding: 7px 15px;
+        border: 1px solid var(--accent);
         border-radius: 3px;
-        background: var(--tag-bg);
-        color: var(--text);
+        background: transparent;
+        color: var(--accent);
         text-decoration: none;
         font-size: 14px;
-        transition: background 0.15s ease;
+        transition: background 0.15s ease, color 0.15s ease;
     }
-    .contact-pill:hover { background: var(--tag-hover); }
+    .contact-pill:hover { background: var(--accent); color: #ffffff; }
 
     .section { margin-bottom: 48px; }
 
@@ -157,8 +177,8 @@
         font-weight: 400;
         color: var(--text);
     }
-    .paper-title a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--text); }
-    .paper-title a:hover { color: var(--navy-hover); }
+    .paper-title a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--rule); transition: color 0.15s ease, text-decoration-color 0.15s ease; }
+    .paper-title a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
     .jmp-badge {
         display: inline-block;
@@ -169,7 +189,7 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         color: #fff;
-        background: var(--navy);
+        background: var(--accent);
         border-radius: 999px;
         vertical-align: middle;
         position: relative;
@@ -234,8 +254,6 @@
         line-height: 1.72;
         color: var(--body-grey);
         margin-top: 12px;
-        padding-left: 16px;
-        border-left: 2px solid var(--rule);
         max-width: 620px;
     }
 
@@ -255,8 +273,11 @@
     .tag:hover { background: var(--tag-hover); }
 
     @media (max-width: 560px) {
-        .header-row { flex-direction: column; }
+        .header-row { flex-direction: column; gap: 24px; }
         .id-block { flex: none; }
+        .bio-block { flex: none; min-width: 0; }
+        header { margin-bottom: 32px; }
+        .section { margin-bottom: 36px; }
     }
 
     :focus-visible {
@@ -311,7 +332,7 @@
                 <div class="tags">
                     <details class="abstract-toggle">
                         <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">Teaching was a critical occupation for women in the early 20th century, accounting for 25% of women&rsquo;s white-collar work in 1920. It was also the highest-paying female-dominant profession. In this paper, I study how access to teaching affected the trajectory of women&rsquo;s labor, marriage, and fertility outcomes. Using newly digitized records from over a decade of Illinois teacher certification exams linked to the full-count census (1910&ndash;1950), I implement a regression discontinuity design around pass thresholds using individuals&rsquo; first exam attempt score to identify individual-level variation in women&rsquo;s access to teaching. I find that marginal passers are 30% more likely to ever be teachers and 25% more likely to ever be in the labor force in subsequent decennial censuses. Labor force effects persist into the very long run, and by 1940 marginal passers earn significantly more income. I also find that teaching delayed marriage and possibly reduced completed fertility. Ongoing work tests for intergenerational effects of women&rsquo;s work by examining effects on children&rsquo;s education and labor outcomes.</div>
+                        <div class="abstract-text">Teaching was a critical occupation for women in the early 20th century, accounting for 25% of women&rsquo;s white-collar work in 1920. It was also among the highest-paying female-dominant professions. In this paper, I study how access to teaching affected the trajectory of women&rsquo;s labor, marriage, and fertility outcomes. Using newly digitized records from over a decade of Illinois teacher certification exams linked to the full-count census (1910&ndash;1950), I implement a regression discontinuity design around pass thresholds, using individuals&rsquo; first exam-attempt scores to identify individual-level variation in women&rsquo;s access to teaching. I find that marginal passers are 40% more likely to have ever been teachers and 25% more likely to have ever been in the labor force in subsequent decennial censuses. Labor force effects persist into the very long run, and by 1940 marginal passers earn significantly more income. I also find that teaching both delayed and deterred marriage altogether and reduced completed fertility, driven mainly by childlessness. Ongoing work tests for spillover and intergenerational effects of women&rsquo;s work by examining effects on sisters&rsquo; and children&rsquo;s education and labor outcomes.</div>
                     </details>
                 </div>
             </div>
@@ -339,11 +360,11 @@
 
             <div class="paper">
                 <span class="paper-title">Teacher Marriage Bars</span>
-                <div class="paper-meta">with Wenni Yang</div>
+                <div class="paper-meta">with <a href="https://wenniyang.com/" style="color:inherit;">Wenni Yang</a></div>
                 <div class="tags">
                     <details class="abstract-toggle">
                         <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market (Goldin, 2006). An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div>
+                        <div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market; much of this increase was driven by married women&rsquo;s participation in the labor force. An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div>
                     </details>
                 </div>
             </div>

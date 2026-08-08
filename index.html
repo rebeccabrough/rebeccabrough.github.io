@@ -21,218 +21,248 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --navy: #1a1a1a;
-        --navy-hover: #000000;
-        --accent: #2f5d5a;
-        --accent-hover: #244745;
-        --text: #1a1a1a;
-        --subtitle-grey: #555555;
+        --ink: #1a1a1a;
+        --accent: #1a4a80;
+        --accent-hover: #163e6c;
         --body-grey: #333333;
-        --tag-bg: #ededee;
-        --tag-border: #c8c8cb;
-        --tag-hover: #e0e0e2;
-        --rule: #dddddd;
-        --max-width: 780px;
+        --meta-grey: #6f6f6f;
+        --caps-grey: #9a9a9a;
+        --rule: #dcdcdc;
+        --rule-faint: #efefef;
+        --max-width: 880px;
     }
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
         margin: 0;
-        padding: 48px 24px 96px;
-        font-family: 'Roboto', system-ui, Arial, sans-serif;
-        color: var(--text);
+        padding: 0 28px 90px;
+        font-family: 'Source Sans 3', system-ui, -apple-system, Arial, sans-serif;
+        font-size: 17px;
+        color: var(--ink);
         background: #ffffff;
-        line-height: 1.6;
+        line-height: 1.62;
+        -webkit-font-smoothing: antialiased;
     }
 
-    .container {
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .skip-link {
+        position: absolute;
+        left: -9999px;
+        background: var(--ink);
+        color: #fff;
+        padding: 10px 16px;
+        z-index: 30;
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .skip-link:focus { left: 10px; top: 10px; }
+
+    /* ---------- Masthead ---------- */
+    header { text-align: center; padding-top: 52px; }
+
+    .name {
+        font-size: 46px;
+        font-weight: 300;
+        color: var(--ink);
+        margin: 0 0 30px;
+        line-height: 1.1;
+        letter-spacing: 0.005em;
+    }
+
+    .role {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.19em;
+        color: var(--caps-grey);
+        margin: 0 0 30px;
+    }
+
+    /* ---------- Centered nav with flanking rules ---------- */
+    .pagenav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #ffffff;
+        padding: 14px 0 13px;
+        margin-bottom: 52px;
+    }
+    .pagenav-inner {
+        display: flex;
+        align-items: center;
         max-width: var(--max-width);
         margin: 0 auto;
     }
-
-    .accent-bar {
-        height: 4px;
-        width: 56px;
-        background: var(--accent);
-        margin-bottom: 32px;
+    .pagenav-inner::before,
+    .pagenav-inner::after {
+        content: "";
+        flex: 1 1 0;
+        height: 1px;
+        background: var(--rule);
+        min-width: 12px;
     }
-
-    header {
-        margin-bottom: 56px;
-    }
-
-    .name-block {
-        text-align: left;
-        margin-bottom: 24px;
-    }
-
-    .name {
-        font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-        font-optical-sizing: auto;
-        font-size: 36px;
-        font-weight: 500;
-        color: var(--text);
-        margin: 0 0 6px;
-        letter-spacing: -0.005em;
-    }
-
-    .subtitle {
-        font-size: 17px;
-        font-weight: 400;
-        color: var(--subtitle-grey);
-        margin: 0;
-    }
-
-    .header-row {
+    .nav-links {
         display: flex;
-        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 32px;
+        padding: 0 30px;
+    }
+    .nav-links a {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        color: var(--meta-grey);
+        text-decoration: none;
+        padding-bottom: 3px;
+        border-bottom: 1px solid transparent;
+        transition: color 0.15s ease, border-color 0.15s ease;
+        white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+    /* ---------- About ---------- */
+    .about {
+        display: flex;
+        gap: 46px;
         align-items: flex-start;
         flex-wrap: wrap;
-    }
-
-    .id-block {
-        flex: 0 0 200px;
-        text-align: left;
+        margin-bottom: 68px;
+        scroll-margin-top: 92px;
     }
 
     .headshot {
-        width: 200px;
-        height: 200px;
-        border-radius: 4px;
-        background: #f0f0f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
-        font-size: 13px;
+        flex: 0 0 268px;
+        width: 268px;
+        height: 268px;
+        background: #f2f2f2;
         overflow: hidden;
     }
     .headshot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .bio-block {
-        flex: 1 1 380px;
-        min-width: 280px;
-    }
+    .bio-block { flex: 1 1 340px; min-width: 280px; }
 
-    .bio {
-        font-size: 16px;
-        color: var(--body-grey);
-        margin: 0 0 16px;
-    }
+    .bio { margin: 0 0 18px; color: var(--body-grey); }
+    .bio:first-child { margin-top: -6px; }
 
-    .bio a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: var(--rule); transition: color 0.15s ease, text-decoration-color 0.15s ease; }
-    .bio a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+    a.inline {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        transition: color 0.15s ease;
+    }
+    a.inline:hover { color: var(--accent-hover); }
 
     .access-note {
-        font-size: 14px;
-        color: var(--subtitle-grey);
-        margin: 0 0 20px;
+        font-size: 15px;
+        color: var(--meta-grey);
+        margin: 22px 0 0;
     }
 
-    .contact {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .contact-pill {
-        display: inline-block;
-        padding: 7px 15px;
-        border: 1px solid var(--accent);
-        border-radius: 3px;
-        background: transparent;
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 14px;
-        transition: background 0.15s ease, color 0.15s ease;
-    }
-    .contact-pill:hover { background: var(--accent); color: #ffffff; }
-
-    .section { margin-bottom: 48px; }
+    /* ---------- Sections ---------- */
+    .section { margin-bottom: 64px; scroll-margin-top: 92px; }
 
     .section-title {
-        font-size: 15px;
+        display: flex;
+        align-items: center;
+        font-size: 15.5px;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--text);
-        border-bottom: 1px solid var(--rule);
-        padding-bottom: 8px;
-        margin: 0 0 24px;
+        letter-spacing: 0.15em;
+        color: var(--ink);
+        margin: 0 0 34px;
     }
+    .section-title::before,
+    .section-title::after {
+        content: "";
+        flex: 1 1 0;
+        height: 1px;
+        background: var(--rule);
+        min-width: 12px;
+    }
+    .section-title span { padding: 0 26px; }
 
+    /* ---------- Papers ---------- */
     .paper {
-        margin-bottom: 26px;
-        padding-bottom: 26px;
-        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--rule-faint);
     }
-    .paper:last-child { border-bottom: none; }
+    .paper:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 
     .paper-title {
-        font-size: 16px;
-        font-weight: 400;
-        color: var(--text);
+        display: block;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--ink);
     }
-    .paper-title a { color: var(--text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--rule); transition: color 0.15s ease, text-decoration-color 0.15s ease; }
+    .paper-title a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: var(--rule);
+        transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
     .paper-title a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
-    .jmp-badge {
+    .jmp-mark {
         display: inline-block;
         margin-left: 12px;
-        padding: 3px 11px 3px 10px;
-        font-size: 10.5px;
-        font-weight: 600;
+        font-size: 11px;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: #fff;
-        background: var(--accent);
-        border-radius: 999px;
-        vertical-align: middle;
-        position: relative;
-        top: -2px;
+        letter-spacing: 0.14em;
+        color: var(--accent);
         white-space: nowrap;
-    }
-    .jmp-badge::before {
-        content: "";
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #fff;
-        opacity: 0.85;
-        margin-right: 7px;
-        vertical-align: middle;
-        position: relative;
-        top: -1px;
+        vertical-align: 1px;
     }
 
     .paper-meta {
-        font-size: 14px;
-        color: var(--subtitle-grey);
-        margin-top: 3px;
+        font-size: 15.5px;
+        color: var(--meta-grey);
+        margin-top: 4px;
     }
+    .paper-meta a {
+        color: var(--meta-grey);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        text-decoration-color: var(--rule);
+        transition: color 0.15s ease;
+    }
+    .paper-meta a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+    /* ---------- Abstract toggle ---------- */
+    .abstract-toggle { margin-top: 11px; }
 
     summary {
         list-style: none;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
-        gap: 7px;
+        gap: 8px;
         width: fit-content;
-        font-size: 13px;
-        letter-spacing: 0.02em;
-        color: var(--subtitle-grey);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        color: var(--caps-grey);
         transition: color 0.15s ease;
     }
     summary::-webkit-details-marker { display: none; }
-    summary:hover { color: var(--text); }
-    summary::before {
-        content: "Abstract";
-    }
+    summary:hover { color: var(--accent); }
+    summary::before { content: "Abstract"; }
     summary::after {
         content: "";
         width: 5px;
@@ -242,169 +272,218 @@
         transform: rotate(-45deg);
         transition: transform 0.2s ease;
         position: relative;
-        top: -1px;
-        opacity: 0.7;
+        top: -2px;
     }
-    details[open] summary::after {
-        transform: rotate(45deg);
-        top: 1px;
-    }
+    details[open] summary::after { transform: rotate(45deg); top: 1px; }
+
     .abstract-text {
-        font-size: 14.5px;
-        line-height: 1.72;
+        font-size: 16px;
+        line-height: 1.75;
         color: var(--body-grey);
-        margin-top: 12px;
-        max-width: 620px;
+        margin-top: 13px;
+        max-width: 760px;
     }
 
-    .tags {
-        margin-top: 12px;
+    .teach-label {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--ink);
+        margin: 0 0 4px;
     }
-    .abstract-toggle { display: block; }
-    .tag {
-        padding: 4px 12px;
+    .teach-label + .teach-list { margin-bottom: 18px; }
+    .teach-list {
+        list-style: disc;
+        margin: 0;
+        padding-left: 20px;
+    }
+    .teach-list li {
+        font-size: 15.5px;
+        line-height: 1.5;
+        color: var(--body-grey);
+        padding: 1px 0;
+    }
+    .teach-list li::marker { color: var(--rule); }
+    .teach-list .term { color: var(--meta-grey); }
+    .teach-list .term::before { content: "\00b7\00a0"; color: var(--rule); margin-left: 4px; }
+
+    footer {
+        border-top: 1px solid var(--rule);
+        padding-top: 22px;
+        text-align: center;
         font-size: 13px;
-        background: var(--tag-bg);
-        border: 1px solid var(--tag-border);
-        border-radius: 3px;
-        color: var(--text);
-        text-decoration: none;
-    }
-    .tag:hover { background: var(--tag-hover); }
-
-    @media (max-width: 560px) {
-        .header-row { flex-direction: column; gap: 24px; }
-        .id-block { flex: none; }
-        .bio-block { flex: none; min-width: 0; }
-        header { margin-bottom: 32px; }
-        .section { margin-bottom: 36px; }
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--caps-grey);
     }
 
-    :focus-visible {
-        outline: 2px solid var(--navy);
-        outline-offset: 2px;
+    @media (max-width: 700px) {
+        .name { font-size: 34px; }
+        header { padding-top: 34px; }
+        .pagenav-inner::before, .pagenav-inner::after { display: none; }
+        .nav-links { gap: 20px; padding: 0; }
+        .nav-links a { font-size: 12.5px; }
+        .pagenav { border-bottom: 1px solid var(--rule); margin-bottom: 38px; }
+        .about { gap: 28px; margin-bottom: 46px; }
+        .headshot { flex: 0 0 auto; width: 100%; max-width: 268px; height: auto; aspect-ratio: 1 / 1; margin: 0 auto; }
+        .bio-block { flex: 1 1 auto; min-width: 0; }
+        .section { margin-bottom: 46px; }
+        .section-title::before, .section-title::after { min-width: 8px; }
+        .section-title span { padding: 0 14px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        * { transition: none !important; }
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
 <div class="container">
-
-    <div class="accent-bar"></div>
-
     <header>
-        <div class="name-block">
-            <p class="name">Rebecca Brough</p>
-            <p class="subtitle">PhD Candidate in Economics, UC Davis</p>
-        </div>
+        <h1 class="name">Rebecca Brough</h1>
+    </header>
+</div>
 
-        <div class="header-row">
-            <div class="id-block">
-                <div class="headshot">
-                    <img src="headshot.jpg" alt="Rebecca Brough">
-                </div>
+<nav class="pagenav" aria-label="Sections of this page">
+    <div class="pagenav-inner">
+        <div class="nav-links">
+            <a href="#wp-heading">Working Papers</a>
+            <a href="#pub-heading">Publications</a>
+            <a href="#teach-heading">Teaching</a>
+            <a href="cv.html">CV</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <main id="main">
+
+        <!-- About -->
+        <section class="about" id="about" aria-label="About">
+            <div class="headshot">
+                <img src="headshot.jpg" alt="Headshot of Rebecca Brough">
             </div>
 
             <div class="bio-block">
                 <p class="bio">
-                I am an applied microeconomist working in labor, public, and economic history. I will be
-                on the 2026&ndash;2027 job market and can be reached at
-                <a href="mailto:rjbrough@ucdavis.edu">rjbrough@ucdavis.edu</a>.
-            </p>
-            <p class="access-note">
-                Please contact me if you have any challenges accessing materials listed on this page.
-            </p>
-            <nav class="contact" aria-label="Contact and links">
-                <a class="contact-pill" href="cv.pdf">CV &mdash; PDF</a>
-                <a class="contact-pill" href="cv.html">CV &mdash; HTML</a>
-            </nav>
+                    I am a PhD candidate in economics at UC Davis.
+                </p>
+                <p class="bio">
+                    I am an applied microeconomist working in labor, public, and economic history. I will be
+                    on the 2026&ndash;2027 job market and can be reached at
+                    <a class="inline" href="mailto:rjbrough@ucdavis.edu">rjbrough@ucdavis.edu</a>.
+                </p>
+                <p class="bio">
+                    Find a <a class="inline" href="cv.pdf" download="Brough_CV.pdf">PDF of my CV here</a>
+                    and my <a class="inline" href="https://scholar.google.com/citations?user=uzWE_b4AAAAJ&amp;hl=en">Google Scholar page here</a>.
+                </p>
+                <p class="access-note">
+                    Please contact me if you have any challenges accessing materials listed on this page.
+                </p>
             </div>
-        </div>
-    </header>
-
-    <main id="main">
+        </section>
 
         <!-- Working Papers -->
         <section class="section" aria-labelledby="wp-heading">
-            <h2 class="section-title" id="wp-heading">Working Papers</h2>
+            <h2 class="section-title" id="wp-heading"><span>Working Papers</span></h2>
 
             <div class="paper">
-                <span class="paper-title">Access to Teaching and Women's Long-run Outcomes (JMP)</span>
-                <div class="tags">
-                    <details class="abstract-toggle">
-                        <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">Teaching was a critical occupation for women in the early 20th century, accounting for 25% of women&rsquo;s white-collar work in 1920. It was also among the highest-paying female-dominant professions. In this paper, I study how access to teaching affected the trajectory of women&rsquo;s labor, marriage, and fertility outcomes. Using newly digitized records from over a decade of Illinois teacher certification exams linked to the full-count census (1910&ndash;1950), I implement a regression discontinuity design around pass thresholds, using individuals&rsquo; first exam-attempt scores to identify individual-level variation in women&rsquo;s access to teaching. I find that marginal passers are 40% more likely to have ever been teachers and 25% more likely to have ever been in the labor force in subsequent decennial censuses. Labor force effects persist into the very long run, and by 1940 marginal passers earn significantly more income. I also find that teaching both delayed and deterred marriage, and reduced completed fertility driven mainly by childlessness. Ongoing work tests for spillover and intergenerational effects of women&rsquo;s work by examining effects on sisters&rsquo; and children&rsquo;s education and labor outcomes.</div>
-                    </details>
-                </div>
+                <span class="paper-title">Creating Career Women: Access to Teaching and Women&rsquo;s Long-run Outcomes<span class="jmp-mark">Job market paper</span></span>
+                <details class="abstract-toggle">
+                    <summary></summary>
+                    <div class="abstract-text">Teaching was a critical occupation for women in the early twentieth century, accounting for 25% of women&rsquo;s white-collar work in 1920. In this paper, I study how access to teaching affected the trajectory of women&rsquo;s labor, human capital, marriage, and fertility outcomes. I digitize records from Illinois teacher-certification exams (1916&ndash;1923) and link these to the full count censuses (1910&ndash;1940) to implement a regression discontinuity design around the exam&rsquo;s passing threshold. I find that marginal passers are 13.6 percentage points (36%) more likely ever to be teachers and 9.6 percentage points (16%) more likely to ever be in the labor force. These labor effects persist into the very long run, driven by women who remain teachers, in part by women who continued to work after marriage when institutional barriers permitted it, and among those who acquired additional schooling. Access to teaching also delayed and reduced marriage and fertility, but did not change whom women married. These results highlight that career opportunities in early-adulthood can induce women into sustained LFP, with corresponding implications for their family outcomes.</div>
+                </details>
             </div>
 
             <div class="paper">
                 <span class="paper-title">Better Outcomes, Lower Costs: Evidence from Competitive Bidding in WIC</span>
-                <div class="paper-meta">with <a href="https://sites.google.com/view/graceortuzar/home" style="color:inherit;">Grace Ortuzar</a></div>
-                <div class="tags">
-                    <details class="abstract-toggle">
-                        <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">The Special Supplemental Nutrition Program for Women, Infants, and Children, popularly known as WIC, serves about 40 percent of all infants in the US. The largest expense for the federal government in this program is infant formula. This paper explores the health effects of the most prominent cost-containment effort in the WIC program&mdash;the introduction of sole-source infant formula contracts awarded to manufacturers through a competitive bidding process&mdash;the &ldquo;rebate system&rdquo;&mdash;in the late 1980s. Exploiting the staggered adoption of this system across states, we find that sole-source contracting reduced the incidence of low birth weight by 1.4 percent and increased average birth weight by 5.7 grams. There are particularly large effects for Black infants, whose incidence of low birth weight decreased by 3.6 percent and whose average birth weight increased by 11 grams. Evidence from enrollment and per-participant expenditure data suggests these health improvements were driven by increased WIC enrollment rather than changes in the quality of the food package.</div>
-                    </details>
-                </div>
+                <div class="paper-meta">with <a href="https://sites.google.com/view/graceortuzar/home">Grace Ortuzar</a></div>
+                <details class="abstract-toggle">
+                    <summary></summary>
+                    <div class="abstract-text">The Special Supplemental Nutrition Program for Women, Infants, and Children, popularly known as WIC, serves about 40 percent of all infants in the US. The largest expense for the federal government in this program is infant formula. This paper explores the health effects of the most prominent cost-containment effort in the WIC program&mdash;the introduction of sole-source infant formula contracts awarded to manufacturers through a competitive bidding process&mdash;the &ldquo;rebate system&rdquo;&mdash;in the late 1980s. Exploiting the staggered adoption of this system across states, we find that sole-source contracting reduced the incidence of low birth weight by 1.4 percent and increased average birth weight by 5.7 grams. There are particularly large effects for Black infants, whose incidence of low birth weight decreased by 3.6 percent and whose average birth weight increased by 11 grams. Evidence from enrollment and per-participant expenditure data suggests these health improvements were driven by increased WIC enrollment rather than changes in the quality of the food package.</div>
+                </details>
             </div>
 
             <div class="paper">
                 <span class="paper-title">Citizenship Policy and Immigrant Women&rsquo;s Integration: Evidence from the 1922 Cable Act</span>
-                <div class="tags">
-                    <details class="abstract-toggle">
-                        <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">The 1922 Cable Act repealed automatic citizenship for foreign-born women marrying citizens after a specific date, effectively introducing naturalization requirements for first-generation female immigrants in the US. Using newly digitized marriage records and a regression discontinuity design around couples&rsquo; marriage dates, I study the effects of naturalization requirements for women on their and their children&rsquo;s integration outcomes. Naturalization requirements reduced married women&rsquo;s probability of obtaining citizenship by 15&ndash;18 percentage points in the medium run but did not affect citizenship status in the long run. Naturalization requirements negatively affected women&rsquo;s integration, decreasing their probability of speaking English by 3 p.p. and increasing the likelihood that daughters are given names common among immigrants, but otherwise had no effects on women&rsquo;s labor force participation or employment. I also find some evidence that sons are less socially integrated: they are 3 p.p. less likely to volunteer for WWII and possibly less likely to marry natives. These results highlight the unique role that mothers&rsquo; access to citizenship plays in creating a home environment for social integration.</div>
-                    </details>
-                </div>
+                <details class="abstract-toggle">
+                    <summary></summary>
+                    <div class="abstract-text">The 1922 Cable Act repealed automatic citizenship for foreign-born women marrying citizens after a specific date, effectively introducing naturalization requirements for first-generation female immigrants in the US. Using newly digitized marriage records and a regression discontinuity design around couples&rsquo; marriage dates, I study the effects of naturalization requirements for women on their and their children&rsquo;s integration outcomes. Naturalization requirements reduced married women&rsquo;s probability of obtaining citizenship by 15&ndash;18 percentage points in the medium run but did not affect citizenship status in the long run. Naturalization requirements negatively affected women&rsquo;s integration, decreasing their probability of speaking English by 3 p.p. and increasing the likelihood that daughters are given names common among immigrants, but otherwise had no effects on women&rsquo;s labor force participation or employment. I also find some evidence that sons are less socially integrated: they are 3 p.p. less likely to volunteer for WWII and possibly less likely to marry natives. These results highlight the unique role that mothers&rsquo; access to citizenship plays in creating a home environment for social integration.</div>
+                </details>
             </div>
 
             <div class="paper">
                 <span class="paper-title">Teacher Marriage Bars</span>
-                <div class="paper-meta">with <a href="https://wenniyang.com/" style="color:inherit;">Wenni Yang</a></div>
-                <div class="tags">
-                    <details class="abstract-toggle">
-                        <summary aria-expanded="false"></summary>
-                        <div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market; much of this increase was driven by married women&rsquo;s participation in the labor force. An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div>
-                    </details>
-                </div>
+                <div class="paper-meta">with <a href="https://wenniyang.com/">Wenni Yang</a></div>
+                <details class="abstract-toggle">
+                    <summary></summary>
+                    <div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market; much of this increase was driven by married women&rsquo;s participation in the labor force. An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div>
+                </details>
             </div>
 
         </section>
 
         <!-- Publications -->
         <section class="section" aria-labelledby="pub-heading">
-            <h2 class="section-title" id="pub-heading">Publications</h2>
+            <h2 class="section-title" id="pub-heading"><span>Publications</span></h2>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/jel.20251774">Refugees&rsquo; Economic Integration</a></span>
-                <div class="paper-meta">with Dany Bahar and Giovanni Peri &middot; forthcoming, <em>Journal of Economic Literature</em></div>
+                <div class="paper-meta">with <a href="https://www.danybahar.com/">Dany Bahar</a> and <a href="https://giovanniperi.ucdavis.edu/">Giovanni Peri</a> &middot; forthcoming, <em>Journal of Economic Literature</em></div>
             </div>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230460">Eliminating Fares to Expand Opportunities: Experimental Evidence on the Impacts of Free Public Transportation on Economic and Social Disparities</a></span>
-                <div class="paper-meta">with Matt Freedman and David Phillips &middot; <em>American Economic Journal: Economic Policy</em> 17(3):1&ndash;34, 2025</div>
+                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>American Economic Journal: Economic Policy</em> 17(3):1&ndash;34, 2025</div>
             </div>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230053">High Schools Tailored to Adults Can Help Them Complete a Traditional Diploma and Excel in the Labor Market</a></span>
-                <div class="paper-meta">with David Phillips and Patrick Turner &middot; <em>American Economic Journal: Economic Policy</em> 16(4):34&ndash;67, 2024</div>
+                <div class="paper-meta">with <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> and <a href="https://sites.google.com/view/psullivant/">Patrick Turner</a> &middot; <em>American Economic Journal: Economic Policy</em> 16(4):34&ndash;67, 2024</div>
             </div>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0166046222000436">Experimental Evidence on the Effects of Means-Tested Public Transportation Subsidies on Travel Behavior</a></span>
-                <div class="paper-meta">with Matt Freedman and David Phillips &middot; <em>Regional Science and Urban Economics</em> 96:103803, 2022</div>
+                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Regional Science and Urban Economics</em> 96:103803, 2022</div>
             </div>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0165176522001501">Can Transportation Subsidies Reduce Failures to Appear in Criminal Court? Evidence from a Pilot Randomized Controlled Trial</a></span>
-                <div class="paper-meta">with Matt Freedman, Dan Ho, and David Phillips &middot; <em>Economics Letters</em> 216:110540, 2022</div>
+                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a>, <a href="https://dho.stanford.edu/">Dan Ho</a>, and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Economics Letters</em> 216:110540, 2022</div>
             </div>
 
             <div class="paper">
                 <span class="paper-title"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12527">Understanding Socioeconomic Disparities in Travel Behavior During the COVID-19 Pandemic</a></span>
-                <div class="paper-meta">with Matt Freedman and David Phillips &middot; <em>Journal of Regional Science</em> 61(4):753&ndash;774, 2021</div>
+                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Journal of Regional Science</em> 61(4):753&ndash;774, 2021</div>
             </div>
         </section>
+
+        <!-- Teaching -->
+        <section class="section" aria-labelledby="teach-heading">
+            <h2 class="section-title" id="teach-heading"><span>Teaching</span></h2>
+
+            <p class="teach-label">Teaching assistant, UC Davis</p>
+            <ul class="teach-list">
+                <li>ECN 140: Econometrics <span class="term">Winter 2022</span></li>
+                <li>ECN 130: Public Microeconomics <span class="term">Spring 2022</span></li>
+                <li>ECN 102: Analysis of Economic Data <span class="term">Winter 2021, Spring 2021, Fall 2022</span></li>
+                <li>ECN 01A: Principles of Microeconomics <span class="term">Fall 2021</span></li>
+            </ul>
+            <p class="teach-label">Undergraduate Research Fellow Group</p>
+            <ul class="teach-list">
+                <li>Group leader <span class="term">Spring 2024, Fall 2025</span></li>
+            </ul>
+        </section>
+
+        <footer>
+            Rebecca Brough &middot; UC Davis &middot; Updated August 2026
+        </footer>
 
     </main>
 </div>

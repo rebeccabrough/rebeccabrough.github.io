@@ -68,7 +68,7 @@
     header { text-align: center; padding-top: 52px; }
 
     .name {
-        font-size: 46px;
+        font-size: 39px;
         font-weight: 300;
         color: var(--ink);
         margin: 0 0 30px;
@@ -243,46 +243,54 @@
     }
     .paper-meta a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
-    /* ---------- Abstract toggle ---------- */
-    .abstract-toggle { margin-top: 11px; }
-
+    
+    /* ---------- Compact research list ---------- */
+    .group {
+        font-size: 16px; font-weight: 600; color: var(--ink);
+        margin: 40px 0 14px; scroll-margin-top: 92px;
+    }
+    .section-title + .group { margin-top: 0; }
+    .jmp .t { font-size: 16px; font-weight: 600; line-height: 1.45; }
+    .plist { list-style: none; counter-reset: p; margin: 0; padding: 0; }
+    .plist li {
+        counter-increment: p; position: relative;
+        padding-left: 34px; margin-bottom: 14px;
+        font-size: 15px; line-height: 1.45;
+    }
+    .plist li::before {
+        content: "[" counter(p) "]"; position: absolute; left: 0; top: 0;
+        color: var(--caps-grey); font-variant-numeric: tabular-nums;
+    }
+    .plist .t, .plist .t a { color: var(--ink); }
+    .t a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--rule); }
+    .t a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+    .meta { display: block; font-size: 14px; color: var(--meta-grey); margin-top: 1px; }
+    .meta a { color: var(--meta-grey); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+    .meta a:hover { color: var(--accent); }
+    .plist details, .jmp details { margin-top: 3px; }
     summary {
-        list-style: none;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        width: fit-content;
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.13em;
-        color: var(--caps-grey);
-        transition: color 0.15s ease;
+        list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+        font-size: 13.5px; color: var(--accent); width: fit-content;
     }
     summary::-webkit-details-marker { display: none; }
-    summary:hover { color: var(--accent); }
-    summary::before { content: "Abstract"; }
     summary::after {
-        content: "";
-        width: 5px;
-        height: 5px;
-        border-right: 1.5px solid currentColor;
-        border-bottom: 1.5px solid currentColor;
-        transform: rotate(-45deg);
-        transition: transform 0.2s ease;
-        position: relative;
-        top: -2px;
+        content: ""; width: 5px; height: 5px;
+        border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg); position: relative; top: -2px; transition: transform .2s ease;
     }
-    details[open] summary::after { transform: rotate(45deg); top: 1px; }
+    details[open] summary::after { transform: rotate(-135deg); top: 1px; }
+    .abstract-text { font-size: 14.5px; line-height: 1.65; color: var(--body-grey); margin: 6px 0 4px; max-width: 740px; }
 
-    .abstract-text {
-        font-size: 16px;
-        line-height: 1.75;
-        color: var(--body-grey);
-        margin-top: 13px;
-        max-width: 760px;
-    }
+
+    .role { text-transform: none; letter-spacing: 0.01em; font-size: 17px; font-weight: 400; color: var(--meta-grey); margin: -18px 0 30px; }
+    .role .jm { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--accent); }
+    .jmp { border-left: 3px solid var(--accent); background: #f5f8fc; padding: 20px 24px 18px; margin-bottom: 8px; }
+    .jmp-label { display: block; font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+    .jmp .t { font-size: 15px; line-height: 1.45; font-weight: 400; }
+    .jmp .abstract-text { font-size: 15.5px; margin-top: 10px; }
+    .venue { display: block; font-size: 14.5px; color: var(--ink); margin-top: 1px; }
+    .venue em { font-style: italic; font-weight: 400; }
+    @media (prefers-color-scheme: dark) { }
 
     .teach-label {
         font-size: 15px;
@@ -318,10 +326,11 @@
     }
 
     @media (max-width: 700px) {
-        .name { font-size: 34px; }
+        .name { font-size: 30px; }
         header { padding-top: 34px; }
         .pagenav-inner::before, .pagenav-inner::after { display: none; }
-        .nav-links { gap: 20px; padding: 0; }
+        .nav-links { gap: 20px; padding: 0; width: 100%; justify-content: center; }
+        .pagenav-inner { justify-content: center; }
         .nav-links a { font-size: 12.5px; }
         .pagenav { border-bottom: 1px solid var(--rule); margin-bottom: 38px; }
         .about { gap: 28px; margin-bottom: 46px; }
@@ -353,8 +362,7 @@
 <nav class="pagenav" aria-label="Sections of this page">
     <div class="pagenav-inner">
         <div class="nav-links">
-            <a href="#wp-heading">Working Papers</a>
-            <a href="#pub-heading">Publications</a>
+            <a href="#research-heading">Research</a>
             <a href="#teach-heading">Teaching</a>
             <a href="cv.html">CV</a>
         </div>
@@ -372,16 +380,18 @@
 
             <div class="bio-block">
                 <p class="bio">
-                    I am a PhD candidate in economics at UC Davis.
+                    I am a PhD candidate in economics at UC Davis. I am an applied microeconomist working in labor, public, and economic history.
                 </p>
                 <p class="bio">
-                    I am an applied microeconomist working in labor, public, and economic history. I will be
-                    on the 2026&ndash;2027 job market and can be reached at
-                    <a class="inline" href="mailto:rjbrough@ucdavis.edu">rjbrough@ucdavis.edu</a>.
+                    My job market paper uses a regression-discontinuity design to study the effects of women&rsquo;s access to professional work on their long-run labor and family outcomes. In a second research agenda, I evaluate public policy and program interventions aimed at vulnerable groups.
                 </p>
                 <p class="bio">
+                    <strong>I am on the 2026&ndash;27 job market.</strong>
                     Find a <a class="inline" href="cv.pdf" download="Brough_CV.pdf">PDF of my CV here</a>
                     and my <a class="inline" href="https://scholar.google.com/citations?user=uzWE_b4AAAAJ&amp;hl=en">Google Scholar page here</a>.
+                </p>
+                <p class="bio">
+                    Email: <a class="inline" href="mailto:rjbrough@ucdavis.edu">rjbrough@ucdavis.edu</a>
                 </p>
                 <p class="access-note">
                     Please contact me if you have any challenges accessing materials listed on this page.
@@ -389,79 +399,23 @@
             </div>
         </section>
 
-        <!-- Working Papers -->
-        <section class="section" aria-labelledby="wp-heading">
-            <h2 class="section-title" id="wp-heading"><span>Working Papers</span></h2>
+        <section class="section" aria-labelledby="research-heading">
+            <h2 class="section-title" id="research-heading"><span>Research</span></h2>
 
-            <div class="paper">
-                <span class="paper-title">Creating Career Women: Access to Teaching and Women&rsquo;s Long-run Outcomes<span class="jmp-mark">Job market paper</span></span>
-                <details class="abstract-toggle">
-                    <summary></summary>
-                    <div class="abstract-text">Teaching was a critical occupation for women in the early twentieth century, accounting for 25% of women&rsquo;s white-collar work in 1920. In this paper, I study how access to teaching affected the trajectory of women&rsquo;s labor, human capital, marriage, and fertility outcomes. I digitize records from Illinois teacher-certification exams (1916&ndash;1923) and link these to the full count censuses (1910&ndash;1940) to implement a regression discontinuity design around the exam&rsquo;s passing threshold. I find that marginal passers are 13.6 percentage points (36%) more likely ever to be teachers and 9.6 percentage points (16%) more likely to ever be in the labor force. These labor effects persist into the very long run, driven by women who remain teachers, in part by women who continued to work after marriage when institutional barriers permitted it, and among those who acquired additional schooling. Access to teaching also delayed and reduced marriage and fertility, but did not change whom women married. These results highlight that career opportunities in early-adulthood can induce women into sustained LFP, with corresponding implications for their family outcomes.</div>
-                </details>
+                        <div class="jmp">
+                <span class="jmp-label">Job Market Paper</span>
+                <span class="t">Creating Career Women: Access to Teaching Jobs and Women&rsquo;s Long-run Outcomes</span>
+                <details><summary>Abstract</summary><div class="abstract-text">Can career opportunities change the trajectory of women&rsquo;s work and family lives? I study this question in the context of teaching in the early twentieth century, which accounted for 25% of women&rsquo;s white-collar work in 1920. I digitize records from Illinois teacher-certification exams (1916&ndash;1923) and link these to the full-count censuses (1910&ndash;1940) to implement a regression discontinuity design around the exam&rsquo;s passing threshold. I find that marginal passers are 13.6 percentage points (36%) more likely to ever be teachers and 9.6 percentage points (16%) more likely to ever be in the labor force; for marginal failers, the alternative to teaching was typically not another occupation, but to not enter the labor force at all. This gap in labor force participation persisted up to 24 years after the exam, driven by women who remained teachers, in part by women who continued to work after marriage when institutional barriers permitted it, and by those who acquired additional schooling. Access to teaching also delayed and reduced marriage and fertility, but did not change whom women married. These results provide new quasi-experimental evidence that career opportunities in early adulthood can induce women into sustained labor force participation, with corresponding implications for their family outcomes.</div></details>
             </div>
 
-            <div class="paper">
-                <span class="paper-title">Better Outcomes, Lower Costs: Evidence from Competitive Bidding in WIC</span>
-                <div class="paper-meta">with <a href="https://sites.google.com/view/graceortuzar/home">Grace Ortuzar</a></div>
-                <details class="abstract-toggle">
-                    <summary></summary>
-                    <div class="abstract-text">The Special Supplemental Nutrition Program for Women, Infants, and Children, popularly known as WIC, serves about 40 percent of all infants in the US. The largest expense for the federal government in this program is infant formula. This paper explores the health effects of the most prominent cost-containment effort in the WIC program&mdash;the introduction of sole-source infant formula contracts awarded to manufacturers through a competitive bidding process&mdash;the &ldquo;rebate system&rdquo;&mdash;in the late 1980s. Exploiting the staggered adoption of this system across states, we find that sole-source contracting reduced the incidence of low birth weight by 1.4 percent and increased average birth weight by 5.7 grams. There are particularly large effects for Black infants, whose incidence of low birth weight decreased by 3.6 percent and whose average birth weight increased by 11 grams. Evidence from enrollment and per-participant expenditure data suggests these health improvements were driven by increased WIC enrollment rather than changes in the quality of the food package.</div>
-                </details>
-            </div>
+            <h3 class="group" id="pub-heading">Publications</h3>
+            <ol class="plist"><li><span class="t"><a href="https://www.aeaweb.org/articles?id=10.1257/jel.20251774">Refugees&rsquo; Economic Integration</a></span><span class="venue">Forthcoming, <em>Journal of Economic Literature</em></span><span class="meta">with <a href="https://www.danybahar.com/">Dany Bahar</a> and <a href="https://giovanniperi.ucdavis.edu/">Giovanni Peri</a></span></li><li><span class="t"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230460">Eliminating Fares to Expand Opportunities: Experimental Evidence on the Impacts of Free Public Transportation on Economic and Social Disparities</a></span><span class="venue"><em>American Economic Journal: Economic Policy</em> 17(3):1&ndash;34, 2025</span><span class="meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a></span></li><li><span class="t"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230053">High Schools Tailored to Adults Can Help Them Complete a Traditional Diploma and Excel in the Labor Market</a></span><span class="venue"><em>American Economic Journal: Economic Policy</em> 16(4):34&ndash;67, 2024</span><span class="meta">with <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> and <a href="https://sites.google.com/view/psullivant/">Patrick Turner</a></span></li><li><span class="t"><a href="https://www.sciencedirect.com/science/article/pii/S0166046222000436">Experimental Evidence on the Effects of Means-Tested Public Transportation Subsidies on Travel Behavior</a></span><span class="venue"><em>Regional Science and Urban Economics</em> 96:103803, 2022</span><span class="meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a></span></li><li><span class="t"><a href="https://www.sciencedirect.com/science/article/pii/S0165176522001501">Can Transportation Subsidies Reduce Failures to Appear in Criminal Court? Evidence from a Pilot Randomized Controlled Trial</a></span><span class="venue"><em>Economics Letters</em> 216:110540, 2022</span><span class="meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a>, <a href="https://dho.stanford.edu/">Dan Ho</a>, and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a></span></li><li><span class="t"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12527">Understanding Socioeconomic Disparities in Travel Behavior During the COVID-19 Pandemic</a></span><span class="venue"><em>Journal of Regional Science</em> 61(4):753&ndash;774, 2021</span><span class="meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a></span></li></ol>
 
-            <div class="paper">
-                <span class="paper-title">Citizenship Policy and Immigrant Women&rsquo;s Integration: Evidence from the 1922 Cable Act</span>
-                <details class="abstract-toggle">
-                    <summary></summary>
-                    <div class="abstract-text">The 1922 Cable Act repealed automatic citizenship for foreign-born women marrying citizens after a specific date, effectively introducing naturalization requirements for first-generation female immigrants in the US. Using newly digitized marriage records and a regression discontinuity design around couples&rsquo; marriage dates, I study the effects of naturalization requirements for women on their and their children&rsquo;s integration outcomes. Naturalization requirements reduced married women&rsquo;s probability of obtaining citizenship by 15&ndash;18 percentage points in the medium run but did not affect citizenship status in the long run. Naturalization requirements negatively affected women&rsquo;s integration, decreasing their probability of speaking English by 3 p.p. and increasing the likelihood that daughters are given names common among immigrants, but otherwise had no effects on women&rsquo;s labor force participation or employment. I also find some evidence that sons are less socially integrated: they are 3 p.p. less likely to volunteer for WWII and possibly less likely to marry natives. These results highlight the unique role that mothers&rsquo; access to citizenship plays in creating a home environment for social integration.</div>
-                </details>
-            </div>
+            <h3 class="group" id="wp-heading">Other Working Papers</h3>
+            <ol class="plist"><li><span class="t">Teacher Marriage Bars</span><span class="meta">with <a href="https://wenniyang.com/">Wenni Yang</a></span><details><summary>Abstract</summary><div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market; much of this increase was driven by married women&rsquo;s participation in the labor force. An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div></details></li><li><span class="t">Citizenship Policy and Immigrant Women&rsquo;s Integration: Evidence from the 1922 Cable Act</span><details><summary>Abstract</summary><div class="abstract-text">The 1922 Cable Act repealed automatic citizenship for foreign-born women marrying citizens after a specific date, effectively introducing naturalization requirements for first-generation female immigrants in the US. Using newly digitized marriage records and a regression discontinuity design around couples&rsquo; marriage dates, I study the effects of naturalization requirements for women on their and their children&rsquo;s integration outcomes. Naturalization requirements reduced married women&rsquo;s probability of obtaining citizenship by 15&ndash;18 percentage points in the medium run but did not affect citizenship status in the long run. Naturalization requirements negatively affected women&rsquo;s integration, decreasing their probability of speaking English by 3 p.p. and increasing the likelihood that daughters are given names common among immigrants, but otherwise had no effects on women&rsquo;s labor force participation or employment. I also find some evidence that sons are less socially integrated: they are 3 p.p. less likely to volunteer for WWII and possibly less likely to marry natives. These results highlight the unique role that mothers&rsquo; access to citizenship plays in creating a home environment for social integration.</div></details></li><li><span class="t">Better Outcomes, Lower Costs: Evidence from Competitive Bidding in WIC</span><span class="meta">with <a href="https://sites.google.com/view/graceortuzar/home">Grace Ortuzar</a></span><details><summary>Abstract</summary><div class="abstract-text">The Special Supplemental Nutrition Program for Women, Infants, and Children, popularly known as WIC, serves about 40 percent of all infants in the US. The largest expense for the federal government in this program is infant formula. This paper explores the health effects of the most prominent cost-containment effort in the WIC program&mdash;the introduction of sole-source infant formula contracts awarded to manufacturers through a competitive bidding process&mdash;the &ldquo;rebate system&rdquo;&mdash;in the late 1980s. Exploiting the staggered adoption of this system across states, we find that sole-source contracting reduced the incidence of low birth weight by 1.4 percent and increased average birth weight by 5.7 grams. There are particularly large effects for Black infants, whose incidence of low birth weight decreased by 3.6 percent and whose average birth weight increased by 11 grams. Evidence from enrollment and per-participant expenditure data suggests these health improvements were driven by increased WIC enrollment rather than changes in the quality of the food package.</div></details></li></ol>
 
-            <div class="paper">
-                <span class="paper-title">Teacher Marriage Bars</span>
-                <div class="paper-meta">with <a href="https://wenniyang.com/">Wenni Yang</a></div>
-                <details class="abstract-toggle">
-                    <summary></summary>
-                    <div class="abstract-text">Women&rsquo;s increased participation in the workforce over the past century was the most significant change in the US labor market; much of this increase was driven by married women&rsquo;s participation in the labor force. An often-cited but understudied reason for women&rsquo;s increased LFP was the elimination of the marriage bar, a policy prohibiting married women from working. We gathered new data from 1900&ndash;1940 to document the prevalence of the marriage bar in teaching across US cities. Using the 1880&ndash;1940 Census and a difference-in-differences design, we show that marriage bars decreased the share of married female teachers by 2.3 percentage points (15%). This decrease was offset by an increase in single female teachers. We also find suggestive evidence that marriage bars increased retention among single teachers and possibly delayed or deterred marriage, particularly for older women and those exposed to the policy longer. These findings highlight the role of discriminatory employment policies in affecting workforces and workers&rsquo; family decisions.</div>
-                </details>
-            </div>
-
-        </section>
-
-        <!-- Publications -->
-        <section class="section" aria-labelledby="pub-heading">
-            <h2 class="section-title" id="pub-heading"><span>Publications</span></h2>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/jel.20251774">Refugees&rsquo; Economic Integration</a></span>
-                <div class="paper-meta">with <a href="https://www.danybahar.com/">Dany Bahar</a> and <a href="https://giovanniperi.ucdavis.edu/">Giovanni Peri</a> &middot; forthcoming, <em>Journal of Economic Literature</em></div>
-            </div>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230460">Eliminating Fares to Expand Opportunities: Experimental Evidence on the Impacts of Free Public Transportation on Economic and Social Disparities</a></span>
-                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>American Economic Journal: Economic Policy</em> 17(3):1&ndash;34, 2025</div>
-            </div>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230053">High Schools Tailored to Adults Can Help Them Complete a Traditional Diploma and Excel in the Labor Market</a></span>
-                <div class="paper-meta">with <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> and <a href="https://sites.google.com/view/psullivant/">Patrick Turner</a> &middot; <em>American Economic Journal: Economic Policy</em> 16(4):34&ndash;67, 2024</div>
-            </div>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0166046222000436">Experimental Evidence on the Effects of Means-Tested Public Transportation Subsidies on Travel Behavior</a></span>
-                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Regional Science and Urban Economics</em> 96:103803, 2022</div>
-            </div>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0165176522001501">Can Transportation Subsidies Reduce Failures to Appear in Criminal Court? Evidence from a Pilot Randomized Controlled Trial</a></span>
-                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a>, <a href="https://dho.stanford.edu/">Dan Ho</a>, and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Economics Letters</em> 216:110540, 2022</div>
-            </div>
-
-            <div class="paper">
-                <span class="paper-title"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12527">Understanding Socioeconomic Disparities in Travel Behavior During the COVID-19 Pandemic</a></span>
-                <div class="paper-meta">with <a href="https://faculty.sites.uci.edu/freedman/">Matt Freedman</a> and <a href="https://sites.google.com/site/davidcphillipseconomics/">David Phillips</a> &middot; <em>Journal of Regional Science</em> 61(4):753&ndash;774, 2021</div>
-            </div>
+            <h3 class="group" id="wip-heading">Works in Progress</h3>
+            <ol class="plist"><li><span class="t">Multigenerational Effects of Divorce</span></li><li><span class="t">Food Assistance Programs and the Retail Price of Food</span><span class="meta">with <a href="https://faculty.econ.ucdavis.edu/faculty/mbitler/">Marianne Bitler</a></span></li></ol>
         </section>
 
         <!-- Teaching -->
@@ -482,7 +436,7 @@
         </section>
 
         <footer>
-            Rebecca Brough &middot; UC Davis &middot; Updated August 2026
+            Rebecca Brough &middot; UC Davis &middot; Last updated September 2026
         </footer>
 
     </main>

@@ -140,6 +140,11 @@
     }
     .pres-year .items { flex: 1 1 auto; color: var(--body-grey); }
 
+    .refs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+    .ref .inst { font-weight: 500; }
+    .ref .detail { color: var(--body-grey); font-size: 15px; }
+    .ref a { color: var(--subtitle-grey); text-decoration: underline; text-underline-offset: 2px; }
+    .ref a:hover { color: var(--accent); }
     .plain { font-size: 15px; color: var(--body-grey); margin: 0; }
     .plain .label { color: var(--text); font-weight: 500; }
 
@@ -153,6 +158,7 @@
 
     @media (max-width: 560px) {
         .row { flex-direction: column; gap: 2px; }
+        .refs { grid-template-columns: 1fr; }
         .row .date { text-align: left; }
         .contact-line .sep { display: none; }
         .contact-line span, .contact-line a { display: block; margin-bottom: 2px; }
@@ -179,6 +185,8 @@
             <span>Department of Economics, UC Davis</span>
             <span class="sep">|</span>
             <span>Davis, CA 95616</span>
+            <span class="sep">|</span>
+            <a href="https://rebeccabrough.github.io/">rebeccabrough.github.io</a>
             <span class="sep">|</span>
             <span>Citizenship: Canada</span>
         </p>
@@ -212,10 +220,19 @@
         <section class="section">
             <h2 class="section-title">Working Papers</h2>
             <ol class="papers">
-                <li>&ldquo;Creating Career Women: Access to Teaching and Women&rsquo;s Long-run Outcomes&rdquo; (JMP)</li>
+                <li>&ldquo;<a href="BroughJMP.pdf">Creating Career Women: Access to Teaching Jobs and Women&rsquo;s Long-Run Outcomes</a>&rdquo; (JMP)</li>
                 <li>&ldquo;Citizenship Policy and Immigrant Women&rsquo;s Integration: Evidence from the 1922 Cable Act&rdquo;</li>
                 <li>&ldquo;Teacher Marriage Bars&rdquo; <span class="co">(with Wenni Yang)</span></li>
                 <li>&ldquo;Better Outcomes, Lower Costs: Evidence from Competitive Bidding in WIC&rdquo; <span class="co">(with Grace Ortuzar)</span></li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Works in Progress</h2>
+            <ol class="papers">
+                <li>&ldquo;Cash vs. In-Kind: Evidence from the Introduction of SSI and the Food Stamp Cash-Out&rdquo; <span class="co">(with Marianne Bitler, Amelia Hawkins, and Lucie Schmidt)</span></li>
+                <li>&ldquo;Multigenerational Effects of Divorce&rdquo;</li>
+                <li>&ldquo;Food Assistance Programs and the Retail Price of Food&rdquo; <span class="co">(with Marianne Bitler)</span></li>
             </ol>
         </section>
 
@@ -225,7 +242,7 @@
                 <li>
                     &ldquo;<a href="https://www.aeaweb.org/articles?id=10.1257/jel.20251774">Refugees&rsquo; Economic Integration</a>&rdquo;
                     <span class="co">(with Dany Bahar and Giovanni Peri)</span>
-                    <span class="venue">Journal of Economic Literature</span>, forthcoming
+                    <span class="venue">Journal of Economic Literature</span> 64.3 (2026): 950&ndash;83.
                 </li>
                 <li>
                     &ldquo;<a href="https://www.aeaweb.org/articles?id=10.1257/pol.20230460">Eliminating Fares to Expand Opportunities: Experimental Evidence on the Impacts of Free Public Transportation on Economic and Social Disparities</a>&rdquo;
@@ -307,7 +324,7 @@
             <h2 class="section-title">Presentations</h2>
             <div class="pres-year">
                 <div class="yr">2026</div>
-                <div class="items">IPUMS Data Conference; Southern Economic Association; Center for Poverty and Inequality Mini-Conference; Economic History Association (Poster); UC Davis Alumni Conference (Poster); Institute for Research on Poverty (Poster); NBER Summer Institute: DAE (Poster)</div>
+                <div class="items">IPUMS Data Conference; Southern Economic Association; Center for Poverty and Inequality Mini-Conference; All-UC Labor Conference; Bay Area History Workshop; Economic History Association (Poster); UC Davis Alumni Conference (Poster); Institute for Research on Poverty (Poster); NBER Summer Institute: Development of the American Economy (Poster)</div>
             </div>
             <div class="pres-year">
                 <div class="yr">2025</div>
@@ -345,8 +362,16 @@
                 <div class="main">Professors Matt Freedman and David Phillips, through NBER</div>
                 <div class="date">Dec 2022 &ndash; Mar 2023</div>
             </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Relevant Work Experience</h2>
             <div class="row">
-                <div class="main">Wilson Sheehan Lab for Economic Opportunities, University of Notre Dame</div>
+                <div class="main">
+                    <div class="inst">Research Associate</div>
+                    <div class="detail">Wilson Sheehan Lab for Economic Opportunities (LEO), University of Notre Dame</div>
+                    <div class="detail"><em>Role:</em> Managed 10 projects evaluating anti-poverty interventions in transportation, education, health, housing, and criminal justice; helped design and implement RCTs alongside faculty and administrators</div>
+                </div>
                 <div class="date">Jun 2018 &ndash; Jul 2021</div>
             </div>
         </section>
@@ -359,15 +384,15 @@
             </div>
             <div class="row">
                 <div class="main">TA, ECN 140: Econometrics</div>
-                <div class="date">Winter 2022</div>
+                <div class="date">Winter 2023</div>
             </div>
             <div class="row">
                 <div class="main">TA, ECN 130: Public Microeconomics</div>
-                <div class="date">Spring 2022</div>
+                <div class="date">Spring 2023</div>
             </div>
             <div class="row">
                 <div class="main">TA, ECN 102: Analysis of Economic Data</div>
-                <div class="date">Winter 2021; Spring 2021; Fall 2022</div>
+                <div class="date">Winter 2022; Spring 2022; Fall 2022</div>
             </div>
             <div class="row">
                 <div class="main">TA, ECN 01A: Principles of Microeconomics</div>
@@ -386,7 +411,17 @@
             </div>
         </section>
 
-        <p class="updated">Last updated June 2026</p>
+        <section class="section">
+            <h2 class="section-title">References</h2>
+            <div class="refs">
+                <div class="ref"><div class="inst">Professor Giovanni Peri</div><div class="detail">Department of Economics, University of California, Davis</div><div class="detail"><a href="mailto:gperi@ucdavis.edu">gperi@ucdavis.edu</a></div></div>
+                <div class="ref"><div class="inst">Professor Marianne Bitler</div><div class="detail">Department of Economics, University of California, Davis</div><div class="detail"><a href="mailto:bitler@ucdavis.edu">bitler@ucdavis.edu</a></div></div>
+                <div class="ref"><div class="inst">Professor Santiago P&eacute;rez</div><div class="detail">Department of Economics, University of California, Davis</div><div class="detail"><a href="mailto:seperez@ucdavis.edu">seperez@ucdavis.edu</a></div></div>
+                <div class="ref"><div class="inst">Professor Marianne Page</div><div class="detail">Department of Economics, University of California, Davis</div><div class="detail"><a href="mailto:mepage@ucdavis.edu">mepage@ucdavis.edu</a></div></div>
+            </div>
+        </section>
+
+        <p class="updated">Last updated October 2026</p>
 
     </main>
 </div>

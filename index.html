@@ -92,8 +92,20 @@
         top: 0;
         z-index: 20;
         background: #ffffff;
-        margin-bottom: 52px;
+        margin: 0 -28px 52px;
+        padding: 0 28px;
     }
+    /* white cap above the bar: on phones the page otherwise shows through under the status bar */
+    .pagenav::before {
+        content: "";
+        position: absolute;
+        left: 0; right: 0;
+        bottom: 100%;
+        height: 200px;
+        background: #ffffff;
+        display: none;
+    }
+    .pagenav.is-stuck::before { display: block; }   /* only once the bar is pinned, so the name stays visible */
     .pagenav-inner {
         display: flex;
         justify-content: center;
@@ -437,5 +449,44 @@
 
     </main>
 </div>
+<script>
+/* Mark the nav as pinned (adds the white cap above it on phones). */
+(function () {
+  var nav = document.querySelector('.pagenav');
+  if (!nav) return;
+  function check() { nav.classList.toggle('is-stuck', nav.getBoundingClientRect().top <= 0 && window.pageYOffset > 0); }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  check();
+})();
+/* Eased scroll for the section links (21 Oct). Lands each heading just under the sticky nav. */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (!el) return;
+      e.preventDefault();
+      var offset = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var start = window.pageYOffset;
+      var end = Math.min(el.getBoundingClientRect().top + start - offset,
+                         document.documentElement.scrollHeight - window.innerHeight);
+      var dist = end - start;
+      history.replaceState(null, '', a.getAttribute('href'));
+      if (reduce || Math.abs(dist) < 2) { window.scrollTo(0, end); return; }
+      var dur = Math.min(900, Math.max(450, Math.abs(dist) * 0.35));
+      var t0 = null;
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var t = Math.min(1, (ts - t0) / dur);
+        window.scrollTo(0, start + dist * ease(t));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  });
+})();
+</script>
 </body>
 </html>

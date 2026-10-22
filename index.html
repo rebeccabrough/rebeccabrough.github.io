@@ -37,7 +37,7 @@
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body {
         margin: 0;
@@ -87,6 +87,7 @@
 
     /* ---------- Centered nav with flanking rules ---------- */
     .pagenav {
+        position: -webkit-sticky;
         position: sticky;
         top: 0;
         z-index: 20;
@@ -164,6 +165,8 @@
 
     /* ---------- Sections ---------- */
     .section { margin-bottom: 64px; scroll-margin-top: 92px; }
+    /* room below the last section so its heading can sit right under the nav */
+    main > .section:last-of-type { min-height: calc(100vh - 64px); margin-bottom: 0; }
 
     .section-title {
         text-align: center;
@@ -176,6 +179,7 @@
         letter-spacing: 0.15em;
         color: var(--ink);
         margin: 0 0 34px;
+        scroll-margin-top: 64px;
     }
 
     /* ---------- Papers ---------- */

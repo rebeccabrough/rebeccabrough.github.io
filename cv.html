@@ -54,6 +54,7 @@
         transition: background 0.15s ease, color 0.15s ease;
     }
     .topbar .pdf-btn:hover { background: var(--accent); color: #ffffff; }
+    .topbar .pdf-btns { display: flex; gap: 10px; }
 
     .accent-bar {
         height: 4px;
@@ -172,7 +173,10 @@
 
     <div class="topbar">
         <a class="back" href="index.html">Home</a>
-        <a class="pdf-btn" href="cv.pdf" download="Brough_CV.pdf">Download PDF</a>
+        <span class="pdf-btns">
+            <a class="pdf-btn" href="cv.pdf" target="_blank" rel="noopener">View PDF</a>
+            <a class="pdf-btn" href="cv.pdf" download="Brough_CV.pdf">Download PDF</a>
+        </span>
     </div>
 
     <div class="accent-bar"></div>
@@ -370,7 +374,7 @@
                 <div class="main">
                     <div class="inst">Research Associate</div>
                     <div class="detail">Wilson Sheehan Lab for Economic Opportunities (LEO), University of Notre Dame</div>
-                    <div class="detail"><em>Role:</em> Managed 10 projects evaluating anti-poverty interventions in transportation, education, health, housing, and criminal justice; helped design and implement RCTs alongside faculty and administrators</div>
+                    <div class="detail"><em>Role:</em> Managed a portfolio of projects evaluating anti-poverty interventions in transportation, education, health, housing, and criminal justice; helped design and implement RCTs alongside faculty and administrators</div>
                 </div>
                 <div class="date">Jun 2018 &ndash; Jul 2021</div>
             </div>
